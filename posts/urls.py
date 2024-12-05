@@ -4,5 +4,5 @@ from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts', views.posts_list)
+    path('posts/', views.posts_list)
 ]
