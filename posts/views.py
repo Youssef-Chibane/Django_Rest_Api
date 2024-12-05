@@ -7,7 +7,7 @@ from rest_framework import status
 
 
 @api_view(['GET', 'POST'])
-def posts_list(request):
+def posts_list(request, format=None):
 
     if request.method == 'GET':
         posts = Post.objects.all()
@@ -22,7 +22,7 @@ def posts_list(request):
         
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def post_detail(request, id):
+def post_detail(request, id, format=None):
 
     try:
         post = Post.objects.get(pk=id)
