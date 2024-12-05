@@ -12,7 +12,7 @@ def posts_list(request):
     if request.method == 'GET':
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
-        return JsonResponse({'posts': serializer.data})
+        return Response(serializer.data)
     
     if request.method == 'POST':
         serializer = PostSerializer(data=request.data)
@@ -39,4 +39,5 @@ def post_detail(request, id):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        pass
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
